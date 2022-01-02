@@ -9,7 +9,7 @@ from tortoise.contrib.fastapi import HTTPNotFoundError, register_tortoise
 #      --- model ---> models.py ... the referred file
 # ----------------------------------------------------
 # from ..model.models import Todo, TodoIn_Pydantic, Todo_Pydantic
-from models import Todo, TodoIn_Pydantic, Todo_Pydantic
+from model.models import Todo, TodoIn_Pydantic, Todo_Pydantic
 
 
 class Message(BaseModel):
@@ -46,7 +46,7 @@ async def delete(id: int):
 register_tortoise(
    app,
    db_url = "sqlite://../database/store.db", # using relative path here to save the store.db
-   modules = {'models': ['models']},
+   modules = {'models': ['model.models']},   # this line needs to be consistent with "from model.models import ..."
    generate_schemas = True,
    add_exception_handlers = True,
 )
