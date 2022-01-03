@@ -2,15 +2,19 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from tortoise.contrib.fastapi import HTTPNotFoundError, register_tortoise
 
-# ----------------------------------------------------
+# --------------------------------------------------------
 # the following import refers a local .py file
 # +ex07---> info.md
 #      --- app ---> main.py ... this file
-#      --- model ---> models.py ... the referred file
-# ----------------------------------------------------
-# from ..model.models import Todo, TodoIn_Pydantic, Todo_Pydantic
+#          --- model ---> models.py ... the referred file
+# --------------------------------------------------------
 from model.models import Todo, TodoIn_Pydantic, Todo_Pydantic
 
+# -------------------------------------------------------
+# Issue:
+# I try to have sub-dir app & model on the same level
+# But if I do so, I cannot import model.models properly
+# -------------------------------------------------------
 
 class Message(BaseModel):
    message: str
