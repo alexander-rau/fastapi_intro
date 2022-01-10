@@ -12,6 +12,7 @@ jinja2 = "*"
 databases = "*"
 sqlalchemy = "*"
 pytest = "*"
+requests = "*"
 
 [dev-packages]
 
